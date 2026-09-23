@@ -23,6 +23,11 @@ base {
 }
 
 dependencies {
+    // Shared dialect base class lives in :common. compileOnly (not implementation) keeps it out of
+    // the published POM — the fat jar already bundles the :common classes (see the jar task below),
+    // and :common is not a separately published artifact.
+    compileOnly project(":common")
+
     // dialect logging (scala-library + spark-sql come from the root subprojects block)
     implementation "ch.qos.logback:logback-classic:1.3.14"
 
