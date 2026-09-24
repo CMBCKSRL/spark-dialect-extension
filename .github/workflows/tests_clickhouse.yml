@@ -26,14 +26,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # spark3 -> Scala 2.12 / Spark 3.5 / Java 11
-        # spark4 -> Scala 2.13 / Spark 4.x / Java 17
-        clickhouse-jdbc-version: ['0.7.2', '0.9.8']
         include:
           - spark-profile: 'spark3'
             java: '11'
+            clickhouse-jdbc-version: '0.7.2'
+
+          - spark-profile: 'spark3'
+            java: '11'
+            clickhouse-jdbc-version: '0.9.8'
+
           - spark-profile: 'spark4'
             java: '17'
+            clickhouse-jdbc-version: '0.7.2'
+
+          - spark-profile: 'spark4'
+            java: '17'
+            clickhouse-jdbc-version: '0.9.8'
 
     services:
       clickhouse:
